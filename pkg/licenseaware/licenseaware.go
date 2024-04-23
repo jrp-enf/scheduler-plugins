@@ -46,7 +46,7 @@ const (
 	Name = "LicenseAware"
 )
 
-// New initializes and returns a new Coscheduling plugin.
+// New initializes and returns a new LicenseAware plugin.
 func New(obj runtime.Object, handle framework.Handle) (framework.Plugin, error) {
 	//	args, ok := obj.(*config.LicenseAwareArgs)
 	//	if !ok {
