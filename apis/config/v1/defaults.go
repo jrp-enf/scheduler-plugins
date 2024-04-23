@@ -250,3 +250,10 @@ func SetDefaults_SySchedArgs(obj *SySchedArgs) {
 		obj.DefaultProfileName = &DefaultSySchedProfileName
 	}
 }
+
+// SetDefaults_LicenseAwareArgs sets the default parameters for the LicenseAware plugin.
+func SetDefaults_LicenseAwareArgs(obj *LicenseAwareArgs) {
+	if obj.DefaultNamespace == "" {
+		obj.DefaultNamespace = "default"
+	}
+}

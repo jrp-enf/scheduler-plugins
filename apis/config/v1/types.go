@@ -263,3 +263,12 @@ type SySchedArgs struct {
 	// CR name of the default profile for all system calls
 	DefaultProfileName *string `json:"defaultProfileName,omitempty"`
 }
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+type LicenseAwareArgs struct {
+	metav1.TypeMeta `json:",inline"`
+
+	// CR namespace of the default profile for all license requests, defaults to "default"
+	DefaultNamespace string `json:"defaultNamespace,omitempty"`
+}

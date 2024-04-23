@@ -58,3 +58,9 @@ rules:
   - get
   - patch
   - update
+- apiGroups:
+  - api.license-operator.enfabrica.net
+  resources:
+  - licenses
+  verbs:
+  - get
