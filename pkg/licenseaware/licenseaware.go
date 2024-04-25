@@ -3,6 +3,7 @@ package licenseaware
 import (
 	"context"
 	"errors"
+	"fmt"
 	"strconv"
 	"strings"
 	"sync"
@@ -16,6 +17,7 @@ import (
 	"k8s.io/klog/v2"
 	"k8s.io/kubernetes/pkg/scheduler/framework"
 	"sigs.k8s.io/controller-runtime/pkg/client"
+	"sigs.k8s.io/scheduler-plugins/apis/config"
 	"sigs.k8s.io/scheduler-plugins/apis/scheduling/v1alpha1"
 )
 
@@ -48,14 +50,14 @@ const (
 
 // New initializes and returns a new LicenseAware plugin.
 func New(obj runtime.Object, handle framework.Handle) (framework.Plugin, error) {
-	//	args, ok := obj.(*config.LicenseAwareArgs)
-	//	if !ok {
-	//		return nil, fmt.Errorf("want args to be of type LicenseAwareArgs, got %T", obj)
-	//	}
+	args, ok := obj.(*config.LicenseAwareArgs)
+	if !ok {
+		return nil, fmt.Errorf("want args to be of type LicenseAwareArgs, got %T", obj)
+	}
 	defaultNamespace := "default"
-	//	if args.DefaultNamespace != "" {
-	//		defaultNamespace = args.DefaultNamespace
-	//	}
+	if args.DefaultNamespace != "" {
+		defaultNamespace = args.DefaultNamespace
+	}
 
 	scheme := runtime.NewScheme()
 	_ = clientscheme.AddToScheme(scheme)
